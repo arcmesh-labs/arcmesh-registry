@@ -1,0 +1,22 @@
+{
+  "servers": [
+    {
+      "name": "filesystem",
+      "description": "Secure file operations with configurable access controls. Exposes read, write, list, search, and move tools scoped to one or more allowed directories.",
+      "version": "2025.1.0",
+      "publisher": "Anthropic / MCP",
+      "verified": true,
+      "tags": ["filesystem", "files", "io", "official"],
+      "path": "servers/filesystem/manifest.json"
+    },
+    {
+      "name": "postgres",
+      "description": "Read-only PostgreSQL access with schema inspection. Lets MCP clients run SELECT queries, list tables, and explore column types without write risk.",
+      "version": "2024.1.0",
+      "publisher": "Anthropic / MCP",
+      "verified": true,
+      "tags": ["database", "postgresql", "sql", "official"],
+      "path": "servers/postgres/manifest.json"
+    }
+  ]
+}
