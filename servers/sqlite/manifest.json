@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "sqlite",
+  "version": "2024.1.0",
+  "description": "Read and write a local SQLite database. Exposes tools for running SQL queries, listing tables, and inspecting schema against a file on disk.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-sqlite",
+    "version": "latest"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-sqlite",
+      "${DB_PATH}"
+    ],
+    "env": {
+      "DB_PATH": {
+        "description": "Absolute path to the SQLite database file. The file will be created if it does not exist (e.g. /home/user/data/mydb.sqlite).",
+        "required": true,
+        "default": null,
+        "secret": false
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["filesystem", "database"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/sqlite",
+  "license": "MIT",
+  "homepage": "https://modelcontextprotocol.io",
+  "tags": ["database", "sqlite", "sql", "official"]
+}

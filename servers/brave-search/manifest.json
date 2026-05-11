@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "brave-search",
+  "version": "2024.1.0",
+  "description": "Web and local search powered by the Brave Search API. Returns organic results, news, and location-based data without tracking.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-brave-search",
+    "version": "latest"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-brave-search"
+    ],
+    "env": {
+      "BRAVE_API_KEY": {
+        "description": "Brave Search API key. Obtain one at https://brave.com/search/api/.",
+        "required": true,
+        "default": null,
+        "secret": true
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/brave-search",
+  "license": "MIT",
+  "homepage": "https://modelcontextprotocol.io",
+  "tags": ["search", "web", "brave", "official"]
+}

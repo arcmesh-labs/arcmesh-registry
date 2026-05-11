@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "puppeteer",
+  "version": "2024.1.0",
+  "description": "Browser automation and web scraping using Puppeteer. Supports navigating pages, clicking elements, filling forms, taking screenshots, and extracting page content.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-puppeteer",
+    "version": "latest"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-puppeteer"
+    ]
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/puppeteer",
+  "license": "MIT",
+  "homepage": "https://modelcontextprotocol.io",
+  "tags": ["browser", "automation", "puppeteer", "scraping", "official"]
+}

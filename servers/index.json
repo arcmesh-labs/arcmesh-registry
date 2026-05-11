@@ -17,6 +17,60 @@
       "verified": true,
       "tags": ["database", "postgresql", "sql", "official"],
       "path": "servers/postgres/manifest.json"
+    },
+    {
+      "name": "fetch",
+      "description": "Retrieves content from URLs and web pages. Supports HTML-to-markdown conversion and raw content extraction for use in AI workflows.",
+      "version": "2024.1.0",
+      "publisher": "Anthropic / MCP",
+      "verified": true,
+      "tags": ["fetch", "http", "web", "official"],
+      "path": "servers/fetch/manifest.json"
+    },
+    {
+      "name": "github",
+      "description": "Interact with GitHub repositories, issues, pull requests, and code. Enables reading files, searching code, creating issues, and managing PRs through the GitHub API.",
+      "version": "2024.1.0",
+      "publisher": "Anthropic / MCP",
+      "verified": true,
+      "tags": ["github", "git", "api", "official"],
+      "path": "servers/github/manifest.json"
+    },
+    {
+      "name": "sqlite",
+      "description": "Read and write a local SQLite database. Exposes tools for running SQL queries, listing tables, and inspecting schema against a file on disk.",
+      "version": "2024.1.0",
+      "publisher": "Anthropic / MCP",
+      "verified": true,
+      "tags": ["database", "sqlite", "sql", "official"],
+      "path": "servers/sqlite/manifest.json"
+    },
+    {
+      "name": "puppeteer",
+      "description": "Browser automation and web scraping using Puppeteer. Supports navigating pages, clicking elements, filling forms, taking screenshots, and extracting page content.",
+      "version": "2024.1.0",
+      "publisher": "Anthropic / MCP",
+      "verified": true,
+      "tags": ["browser", "automation", "puppeteer", "scraping", "official"],
+      "path": "servers/puppeteer/manifest.json"
+    },
+    {
+      "name": "slack",
+      "description": "Send and read messages in Slack workspaces. Supports posting to channels, reading conversation history, and looking up users and channels via the Slack API.",
+      "version": "2024.1.0",
+      "publisher": "Anthropic / MCP",
+      "verified": true,
+      "tags": ["slack", "messaging", "api", "official"],
+      "path": "servers/slack/manifest.json"
+    },
+    {
+      "name": "brave-search",
+      "description": "Web and local search powered by the Brave Search API. Returns organic results, news, and location-based data without tracking.",
+      "version": "2024.1.0",
+      "publisher": "Anthropic / MCP",
+      "verified": true,
+      "tags": ["search", "web", "brave", "official"],
+      "path": "servers/brave-search/manifest.json"
     }
   ]
 }

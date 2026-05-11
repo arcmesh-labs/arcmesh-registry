@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "slack",
+  "version": "2024.1.0",
+  "description": "Send and read messages in Slack workspaces. Supports posting to channels, reading conversation history, and looking up users and channels via the Slack API.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-slack",
+    "version": "latest"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-slack"
+    ],
+    "env": {
+      "SLACK_BOT_TOKEN": {
+        "description": "Slack bot token (starts with xoxb-). Create a Slack app and install it to your workspace to obtain one.",
+        "required": true,
+        "default": null,
+        "secret": true
+      },
+      "SLACK_TEAM_ID": {
+        "description": "The ID of your Slack workspace (e.g. T01234567). Found in your workspace URL or admin settings.",
+        "required": true,
+        "default": null,
+        "secret": false
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/slack",
+  "license": "MIT",
+  "homepage": "https://modelcontextprotocol.io",
+  "tags": ["slack", "messaging", "api", "official"]
+}

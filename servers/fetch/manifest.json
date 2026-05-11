@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "fetch",
+  "version": "2024.1.0",
+  "description": "Retrieves content from URLs and web pages. Supports HTML-to-markdown conversion and raw content extraction for use in AI workflows.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-fetch",
+    "version": "latest"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-fetch"
+    ]
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/fetch",
+  "license": "MIT",
+  "homepage": "https://modelcontextprotocol.io",
+  "tags": ["fetch", "http", "web", "official"]
+}

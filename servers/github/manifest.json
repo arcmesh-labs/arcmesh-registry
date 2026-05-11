@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "github",
+  "version": "2024.1.0",
+  "description": "Interact with GitHub repositories, issues, pull requests, and code. Enables reading files, searching code, creating issues, and managing PRs through the GitHub API.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-github",
+    "version": "latest"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-github"
+    ],
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": {
+        "description": "GitHub personal access token with repo scope. Generate one at https://github.com/settings/tokens.",
+        "required": true,
+        "default": null,
+        "secret": true
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/github",
+  "license": "MIT",
+  "homepage": "https://modelcontextprotocol.io",
+  "tags": ["github", "git", "api", "official"]
+}
