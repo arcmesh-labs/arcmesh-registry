@@ -1,0 +1,182 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://arcmesh.dev/schema/manifest.schema.json",
+  "title": "ArcMesh MCP Server Manifest",
+  "description": "Describes an MCP server in the ArcMesh registry.",
+  "type": "object",
+  "required": [
+    "name",
+    "version",
+    "description",
+    "publisher",
+    "install",
+    "config",
+    "clients",
+    "permissions",
+    "source_url",
+    "license"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Unique server identifier — lowercase letters, digits, and hyphens only."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$",
+      "description": "Semantic version of this manifest entry (e.g. 1.0.0)."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 300,
+      "description": "One- or two-sentence plain-English summary of what the server does."
+    },
+    "publisher": {
+      "type": "object",
+      "required": ["name", "verified"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display name of the person or organisation that maintains the server."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Publisher website (optional)."
+        },
+        "verified": {
+          "type": "boolean",
+          "description": "True when the ArcMesh team has confirmed the publisher's identity."
+        }
+      }
+    },
+    "install": {
+      "type": "object",
+      "required": ["type", "package"],
+      "additionalProperties": false,
+      "description": "How to install the server runtime.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["npx", "pip", "uvx", "docker", "binary"],
+          "description": "Package manager / runtime used to run the server."
+        },
+        "package": {
+          "type": "string",
+          "description": "Package identifier (npm package, PyPI name, Docker image, download URL, etc.)."
+        },
+        "version": {
+          "type": "string",
+          "description": "Pinned package version. Omit for 'latest'."
+        }
+      }
+    },
+    "config": {
+      "type": "object",
+      "required": ["command", "args"],
+      "additionalProperties": false,
+      "description": "Runtime command and arguments written into the client config block.",
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "Executable to invoke (npx, python, uvx, docker, etc.)."
+        },
+        "args": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Ordered arguments passed to the command. Use ${VAR_NAME} placeholders for user-supplied values."
+        },
+        "env": {
+          "type": "object",
+          "description": "Environment variables the server reads at runtime. Keys are variable names.",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["description"],
+            "additionalProperties": false,
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "Human-readable explanation shown in the installer UI."
+              },
+              "required": {
+                "type": "boolean",
+                "default": false,
+                "description": "Whether the variable must be set before the server can start."
+              },
+              "default": {
+                "description": "Default value if the user does not supply one. Null means no default."
+              },
+              "secret": {
+                "type": "boolean",
+                "default": false,
+                "description": "True for passwords, tokens, and keys — the installer will mask the input."
+              }
+            }
+          }
+        }
+      }
+    },
+    "clients": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "MCP clients known to work with this server.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "claude-desktop",
+          "cursor",
+          "windsurf",
+          "vscode",
+          "zed",
+          "continue"
+        ]
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Coarse-grained capability categories the server requires.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "filesystem",
+          "network",
+          "database",
+          "process",
+          "browser",
+          "memory",
+          "secrets",
+          "git"
+        ]
+      }
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical link to the server's source code."
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX license identifier (e.g. MIT, Apache-2.0, GPL-3.0-only)."
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri",
+      "description": "Project website or documentation page (optional)."
+    },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Free-form search keywords (optional).",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "postgres",
+  "version": "2024.1.0",
+  "description": "Read-only PostgreSQL access with schema inspection. Lets MCP clients run SELECT queries, list tables, and explore column types without write risk.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-postgres",
+    "version": "latest"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-postgres",
+      "${POSTGRES_URL}"
+    ],
+    "env": {
+      "POSTGRES_URL": {
+        "description": "Full PostgreSQL connection string including credentials (e.g. postgresql://user:password@localhost:5432/mydb).",
+        "required": true,
+        "default": null,
+        "secret": true
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["database", "network"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+  "license": "MIT",
+  "homepage": "https://modelcontextprotocol.io",
+  "tags": ["database", "postgresql", "sql", "official"]
+}

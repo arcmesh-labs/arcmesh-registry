@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "filesystem",
+  "version": "2025.1.0",
+  "description": "Secure file operations with configurable access controls. Exposes read, write, list, search, and move tools scoped to one or more allowed directories.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-filesystem",
+    "version": "latest"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-filesystem",
+      "${ALLOWED_PATH}"
+    ],
+    "env": {
+      "ALLOWED_PATH": {
+        "description": "Absolute path the server may read and write. Pass multiple paths by repeating the arg or separating with colons on UNIX (e.g. /home/user/docs).",
+        "required": true,
+        "default": null,
+        "secret": false
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["filesystem"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+  "license": "MIT",
+  "homepage": "https://modelcontextprotocol.io",
+  "tags": ["filesystem", "files", "io", "official"]
+}
