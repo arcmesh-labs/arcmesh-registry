@@ -31,7 +31,7 @@
   },
   "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
   "permissions": ["database", "network"],
-  "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/postgres",
   "license": "MIT",
   "homepage": "https://modelcontextprotocol.io",
   "tags": ["database", "postgresql", "sql", "official"]

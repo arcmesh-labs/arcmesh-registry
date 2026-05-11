@@ -31,7 +31,7 @@
   },
   "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
   "permissions": ["filesystem"],
-  "source_url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/filesystem",
   "license": "MIT",
   "homepage": "https://modelcontextprotocol.io",
   "tags": ["filesystem", "files", "io", "official"]
