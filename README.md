@@ -19,9 +19,9 @@ Each entry in this registry is a single `manifest.json` file that describes how 
 | Client | Status |
 |---|---|
 | Claude Desktop | ✅ Supported |
+| VS Code | ✅ Supported |
 | Cursor | 🔜 Coming soon |
 | Windsurf | 🔜 Coming soon |
-| VS Code | 🔜 Coming soon |
 
 ---
 
