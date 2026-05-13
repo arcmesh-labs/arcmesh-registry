@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "hubspot",
+  "version": "0.4.0",
+  "description": "Access and manage HubSpot CRM data including contacts, companies, deals, and tasks. Uses a private app access token to connect to your HubSpot account.",
+  "publisher": {
+    "name": "HubSpot",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@hubspot/mcp-server"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@hubspot/mcp-server"
+    ],
+    "env": {
+      "PRIVATE_APP_ACCESS_TOKEN": {
+        "description": "HubSpot private app access token. Create a private app in HubSpot under Settings → Integrations → Private Apps and copy the generated token.",
+        "required": true,
+        "default": null,
+        "secret": true
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/HubSpot/mcp-server",
+  "license": "MIT",
+  "homepage": "https://developers.hubspot.com/mcp",
+  "tags": ["hubspot", "crm", "sales", "api", "official"]
+}

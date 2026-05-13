@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "notion",
+  "version": "2.0.0",
+  "description": "Read, search, create, and update Notion pages and databases. Connects to your Notion workspace via an internal integration token and exposes the Notion API to AI assistants.",
+  "publisher": {
+    "name": "Notion / makenotion",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@notionhq/notion-mcp-server"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@notionhq/notion-mcp-server"
+    ],
+    "env": {
+      "OPENAPI_MCP_HEADERS": {
+        "description": "JSON string with Authorization and Notion-Version headers. Example: {\"Authorization\": \"Bearer ntn_your_token\", \"Notion-Version\": \"2022-06-28\"}",
+        "required": true,
+        "default": null,
+        "secret": true
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/makenotion/notion-mcp-server",
+  "license": "MIT",
+  "homepage": "https://developers.notion.com/docs/mcp",
+  "tags": ["notion", "productivity", "api", "official"]
+}

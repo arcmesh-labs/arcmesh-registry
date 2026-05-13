@@ -71,6 +71,78 @@
       "verified": true,
       "tags": ["search", "web", "brave", "official"],
       "path": "servers/brave-search/manifest.json"
+    },
+    {
+      "name": "notion",
+      "description": "Read, search, create, and update Notion pages and databases. Connects to your Notion workspace via an internal integration token and exposes the Notion API to AI assistants.",
+      "version": "2.0.0",
+      "publisher": "Notion / makenotion",
+      "verified": true,
+      "tags": ["notion", "productivity", "api", "official"],
+      "path": "servers/notion/manifest.json"
+    },
+    {
+      "name": "linear",
+      "description": "Interact with Linear projects, issues, and teams. Supports creating, updating, and searching issues through the Linear GraphQL API.",
+      "version": "1.1.2",
+      "publisher": "tacticlaunch",
+      "verified": false,
+      "tags": ["linear", "project-management", "issues", "api"],
+      "path": "servers/linear/manifest.json"
+    },
+    {
+      "name": "stripe",
+      "description": "Manage Stripe payments, customers, subscriptions, and invoices. Enables AI assistants to interact with the Stripe API for billing and payment operations.",
+      "version": "1.0.0",
+      "publisher": "Stripe",
+      "verified": true,
+      "tags": ["stripe", "payments", "billing", "api", "official"],
+      "path": "servers/stripe/manifest.json"
+    },
+    {
+      "name": "hubspot",
+      "description": "Access and manage HubSpot CRM data including contacts, companies, deals, and tasks. Uses a private app access token to connect to your HubSpot account.",
+      "version": "0.4.0",
+      "publisher": "HubSpot",
+      "verified": true,
+      "tags": ["hubspot", "crm", "sales", "api", "official"],
+      "path": "servers/hubspot/manifest.json"
+    },
+    {
+      "name": "airtable",
+      "description": "Read and write Airtable bases, tables, and records. Enables AI assistants to query, create, and update rows in Airtable through the Airtable API.",
+      "version": "1.0.0",
+      "publisher": "community",
+      "verified": false,
+      "tags": ["airtable", "database", "spreadsheet", "api"],
+      "path": "servers/airtable/manifest.json"
+    },
+    {
+      "name": "sentry",
+      "description": "Access Sentry issues, errors, and projects. Lets AI assistants retrieve stack traces, analyze errors, and query events through the Sentry API.",
+      "version": "0.33.0",
+      "publisher": "Sentry / getsentry",
+      "verified": true,
+      "tags": ["sentry", "error-tracking", "monitoring", "api", "official"],
+      "path": "servers/sentry/manifest.json"
+    },
+    {
+      "name": "shopify",
+      "description": "Manage Shopify store data including products, orders, customers, and inventory. Connects to a store's Admin GraphQL API using a custom app access token.",
+      "version": "1.0.0",
+      "publisher": "community",
+      "verified": false,
+      "tags": ["shopify", "ecommerce", "store", "api"],
+      "path": "servers/shopify/manifest.json"
+    },
+    {
+      "name": "gitlab",
+      "description": "Interact with GitLab repositories, issues, merge requests, and code. Supports file operations, branch management, and project management through the GitLab API.",
+      "version": "2024.1.0",
+      "publisher": "Anthropic / MCP",
+      "verified": true,
+      "tags": ["gitlab", "git", "api", "official"],
+      "path": "servers/gitlab/manifest.json"
     }
   ]
 }

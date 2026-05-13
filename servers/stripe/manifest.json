@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "stripe",
+  "version": "1.0.0",
+  "description": "Manage Stripe payments, customers, subscriptions, and invoices. Enables AI assistants to interact with the Stripe API for billing and payment operations.",
+  "publisher": {
+    "name": "Stripe",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@stripe/mcp"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@stripe/mcp",
+      "--tools=all"
+    ],
+    "env": {
+      "STRIPE_SECRET_KEY": {
+        "description": "Stripe secret key (sk_live_... or sk_test_...). Find it in the Stripe Dashboard under Developers → API keys. Use a restricted key (rk_...) for better security.",
+        "required": true,
+        "default": null,
+        "secret": true
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/stripe/agent-toolkit",
+  "license": "MIT",
+  "homepage": "https://stripe.com/docs",
+  "tags": ["stripe", "payments", "billing", "api", "official"]
+}

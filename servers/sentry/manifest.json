@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "sentry",
+  "version": "0.33.0",
+  "description": "Access Sentry issues, errors, and projects. Lets AI assistants retrieve stack traces, analyze errors, and query events through the Sentry API.",
+  "publisher": {
+    "name": "Sentry / getsentry",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@sentry/mcp-server"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@sentry/mcp-server"
+    ],
+    "env": {
+      "SENTRY_ACCESS_TOKEN": {
+        "description": "Sentry user auth token. Create one in Sentry under User Settings → Auth Tokens with scopes: org:read, project:read, project:write, event:write.",
+        "required": true,
+        "default": null,
+        "secret": true
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/getsentry/sentry-mcp",
+  "license": "MIT",
+  "homepage": "https://docs.sentry.io/product/sentry-mcp/",
+  "tags": ["sentry", "error-tracking", "monitoring", "api", "official"]
+}

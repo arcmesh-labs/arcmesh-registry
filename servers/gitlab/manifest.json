@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "gitlab",
+  "version": "2024.1.0",
+  "description": "Interact with GitLab repositories, issues, merge requests, and code. Supports file operations, branch management, and project management through the GitLab API.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-gitlab"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-gitlab"
+    ],
+    "env": {
+      "GITLAB_PERSONAL_ACCESS_TOKEN": {
+        "description": "GitLab personal access token with api scope. Generate one at https://gitlab.com/-/user_settings/personal_access_tokens.",
+        "required": true,
+        "default": null,
+        "secret": true
+      },
+      "GITLAB_API_URL": {
+        "description": "GitLab API base URL. Defaults to https://gitlab.com/api/v4. Set this for self-hosted GitLab instances.",
+        "required": false,
+        "default": "https://gitlab.com/api/v4",
+        "secret": false
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/gitlab",
+  "license": "MIT",
+  "homepage": "https://modelcontextprotocol.io",
+  "tags": ["gitlab", "git", "api", "official"]
+}

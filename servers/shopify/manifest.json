@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/manifest.schema.json",
+  "name": "shopify",
+  "version": "1.0.0",
+  "description": "Manage Shopify store data including products, orders, customers, and inventory. Connects to a store's Admin GraphQL API using a custom app access token.",
+  "publisher": {
+    "name": "community",
+    "verified": false
+  },
+  "install": {
+    "type": "npx",
+    "package": "shopify-mcp-server"
+  },
+  "config": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "shopify-mcp-server"
+    ],
+    "env": {
+      "SHOPIFY_ACCESS_TOKEN": {
+        "description": "Shopify Admin API access token (starts with shpat_). Create a custom app in your Shopify admin under Settings → Apps → Develop apps.",
+        "required": true,
+        "default": null,
+        "secret": true
+      },
+      "MYSHOPIFY_DOMAIN": {
+        "description": "Your Shopify store domain, e.g. your-store.myshopify.com",
+        "required": true,
+        "default": null,
+        "secret": false
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/GeLi2001/shopify-mcp",
+  "license": "MIT",
+  "tags": ["shopify", "ecommerce", "store", "api"]
+}
