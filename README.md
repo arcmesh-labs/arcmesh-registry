@@ -1,8 +1,8 @@
 # ArcMesh Registry
 
-The open registry of MCP servers — install any MCP server with one command.
+The open registry of MCP servers for [arcmesh-pm](https://github.com/arcmesh-labs/arcmesh-pm).
 
-[MCP (Model Context Protocol)](https://modelcontextprotocol.io) lets AI assistants like Claude connect to external tools — GitHub, Notion, Stripe, databases, and more. Setting up MCP servers manually means finding the package, reading docs, editing JSON config files by hand, and figuring out where each client stores its config. ArcMesh eliminates all of that.
+[MCP (Model Context Protocol)](https://modelcontextprotocol.io) lets AI assistants like Claude connect to external tools — GitHub, Notion, Stripe, databases, and more. Each entry in this registry is a single `manifest.json` file that describes how to install, configure, and run an MCP server. The `apm` CLI reads these manifests and does the rest.
 
 ```bash
 apm install github
@@ -10,18 +10,65 @@ apm install notion
 apm install stripe
 ```
 
-Each entry in this registry is a single `manifest.json` file that describes how to install, configure, and run an MCP server. The [arcmesh-pm](https://github.com/arcmesh-labs/arcmesh-pm) CLI reads these manifests, prompts you for any required tokens, and writes the correct config block automatically.
+---
+
+## How it works
+
+The registry is a flat collection of manifest files — one directory per server:
+
+```
+servers/
+  <name>/
+    manifest.json        ← one server, one file
+schema/
+  manifest.schema.json   ← JSON Schema (draft-07) for validation
+validate_manifests.py    ← local validation script
+CONTRIBUTING.md          ← how to add a new server
+```
+
+`apm` fetches `servers/index.json` to search and list servers, then fetches the individual `manifest.json` to install. No database, no API — just files on GitHub.
 
 ---
 
-## Supported clients
+## Manifest structure
 
-| Client | Status |
-|---|---|
-| Claude Desktop | ✅ Supported |
-| VS Code | ✅ Supported |
-| Cursor | 🔜 Coming soon |
-| Windsurf | 🔜 Coming soon |
+A manifest describes everything `apm` needs to install a server:
+
+```json
+{
+  "name": "github",
+  "version": "2024.1.0",
+  "description": "Interact with GitHub repositories, issues, pull requests, and code.",
+  "publisher": {
+    "name": "Anthropic / MCP",
+    "url": "https://modelcontextprotocol.io",
+    "verified": true
+  },
+  "install": {
+    "type": "npx",
+    "package": "@modelcontextprotocol/server-github",
+    "version": "latest"
+  },
+  "config": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-github"],
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": {
+        "description": "GitHub personal access token with repo scope.",
+        "required": true,
+        "secret": true
+      }
+    }
+  },
+  "clients": ["claude-desktop", "cursor", "windsurf", "vscode"],
+  "permissions": ["network"],
+  "source_url": "https://github.com/modelcontextprotocol/servers/tree/master/src/github",
+  "license": "MIT",
+  "tags": ["github", "git", "api"]
+}
+```
+
+Full schema: [`schema/manifest.schema.json`](schema/manifest.schema.json)
 
 ---
 
@@ -45,71 +92,6 @@ Each entry in this registry is a single `manifest.json` file that describes how 
 | [slack](servers/slack/manifest.json) | Messages, channels, and users via the Slack API | Anthropic / MCP | ✓ |
 | [sqlite](servers/sqlite/manifest.json) | Read and write a local SQLite database | Anthropic / MCP | ✓ |
 | [stripe](servers/stripe/manifest.json) | Payments, customers, and subscriptions via the Stripe API | Stripe | ✓ |
-
----
-
-## Quick start
-
-### Install arcmesh-pm
-
-```bash
-pip install arcmesh-pm
-```
-
-### Install a server
-
-```bash
-apm install github
-```
-
-`apm` will prompt you for any required tokens, then write the config block to your Claude Desktop config file automatically.
-
-### Other commands
-
-```bash
-apm list                                          # browse all available servers
-apm search notion                                 # search by name or description
-apm uninstall github                              # remove a server
-apm set-env github GITHUB_PERSONAL_ACCESS_TOKEN   # update a token after install
-apm doctor                                        # check your config for issues
-apm status                                        # list installed servers and token status
-```
-
-### Manual install (without apm)
-
-Copy the `config` block from any `manifest.json` directly into your Claude Desktop config file.
-
-**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
-
-**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
-
-```json
-{
-  "mcpServers": {
-    "github": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token-here"
-      }
-    }
-  }
-}
-```
-
----
-
-## Repository structure
-
-```
-servers/
-  <name>/
-    manifest.json        ← one server, one file
-schema/
-  manifest.schema.json   ← JSON Schema (draft-07) for validation
-validate_manifests.py    ← local validation script
-CONTRIBUTING.md          ← how to add a new server
-```
 
 ---
 

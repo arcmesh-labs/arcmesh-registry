@@ -126,7 +126,7 @@ List only clients the server is known to work with. Current valid values:
 claude-desktop  cursor  windsurf  vscode  zed  continue
 ```
 
-> **Note:** arcmesh-pm currently installs servers for **Claude Desktop only**. Support for Cursor, Windsurf, and VS Code is planned. The `clients` field in manifests is forward-looking — list all supported clients so the registry is accurate when multi-client support ships.
+`apm` supports Claude Desktop, VS Code, Cursor, and Windsurf. List all clients the server is compatible with so the registry is accurate across all of them.
 
 ### Naming rules
 
